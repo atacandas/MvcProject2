@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "UpdateMyProduct";
+}
+
+<h2>UpdateMyProduct</h2>
+<hr />
+
+@using (Html.BeginForm("UpdateMyProduct", "Admin", FormMethod.Post))
+{
+    @Html.Partial("_ProductManiPartial")
+}

@@ -1,0 +1,40 @@
+﻿@model MvcProject.Models.ViewModels.ListProductViewModel
+
+@{
+    ViewBag.Title = "ListMyProducts";
+}
+
+<h2>ListMyProducts</h2>
+<hr />
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-info">@TempData["message"]</div>
+}
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Category Name</th>
+            <th>Supplier Company Name</th>
+            <th>Unit Price</th>
+            <th>Units In Stock</th>
+            <th colspan="2">@Html.ActionLink("Add Product","AddMyProduct",null,new { @class = "btn btn-default btn-block"})</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@(item.CategoryID == null ? "No Category" : item.Category.CategoryName)</td>
+            <td>@(item.SupplierID == null ? "No Supplier" : item.Supplier.CompanyName)</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+            <td>@Html.ActionLink("Update", "UpdateMyProduct", new { id = item.ProductID }, new {@class = "btn btn-xs btn-primary" })</td>
+            <td>@Html.ActionLink("Delete", "DeleteMyProduct", new { id = item.ProductID }, new { @class = "btn btn-xs btn-danger" })</td>
+        </tr>
+        }
+    </tbody>
+</table>

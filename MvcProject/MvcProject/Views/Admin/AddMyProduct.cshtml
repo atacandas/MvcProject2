@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "AddMyProduct";
+}
+
+<h2>AddMyProduct</h2>
+<hr />
+
+@using (Html.BeginForm("AddMyProduct","Admin",FormMethod.Post)) 
+{
+    @Html.Partial("_ProductManiPartial")
+}

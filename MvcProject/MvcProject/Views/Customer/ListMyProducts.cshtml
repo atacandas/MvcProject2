@@ -1,0 +1,33 @@
+﻿
+@model MvcProject.Models.ViewModels.ListProductViewModel
+
+@{
+    ViewBag.Title = "ListMyProducts";
+}
+
+<h2>ListMyProducts</h2>
+<hr />
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Category Name</th>
+            <th>Supplier Company Name</th>
+            <th>Unit Price</th>
+            <th>Units In Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@(item.CategoryID == null ? "No Category" : item.Category.CategoryName)</td>
+            <td>@(item.SupplierID == null ? "No Supplier" : item.Supplier.CompanyName)</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+        </tr>
+        }
+    </tbody>
+</table>
